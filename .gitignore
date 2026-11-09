@@ -1,0 +1,102 @@
+# =====================================================================
+# GestLog : .gitignore racine
+# Structure du dépôt :
+#   db/      scripts SQL et PL/SQL (Oracle)
+#   api/     API ASP.NET Core (Visual Studio)
+#   front/   interface React + TypeScript (Vite)
+# =====================================================================
+
+
+# ---------------------------------------------------------------------
+# Secrets et configuration locale : ne JAMAIS les versionner
+# (les user secrets .NET sont déjà stockés hors du dépôt, dans %APPDATA%)
+# ---------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.local
+appsettings.Local.json
+appsettings.*.Local.json
+secrets.json
+
+# Portefeuilles et certificats Oracle (connexions chiffrées, cloud)
+Wallet_*/
+*.sso
+*.p12
+*.pfx
+
+
+# ---------------------------------------------------------------------
+# .NET / Visual Studio / Rider  (dossier api/)
+# ---------------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+publish/
+artifacts/
+TestResults/
+
+.vs/
+.idea/
+*.user
+*.suo
+*.rsuser
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# Paquets NuGet restaurés localement
+*.nupkg
+*.snupkg
+packages/
+
+
+# ---------------------------------------------------------------------
+# Node / Vite / React  (dossier front/)
+# ---------------------------------------------------------------------
+node_modules/
+dist/
+dist-ssr/
+.vite/
+coverage/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# ---------------------------------------------------------------------
+# Oracle  (dossier db/)
+# ---------------------------------------------------------------------
+# Exports Data Pump et fichiers de trace
+*.dmp
+sqlnet.log
+*.trc
+
+
+# ---------------------------------------------------------------------
+# Éditeurs
+# ---------------------------------------------------------------------
+# VS Code : on ignore le dossier, sauf les recommandations d'extensions partagées
+.vscode/*
+!.vscode/extensions.json
+
+
+# ---------------------------------------------------------------------
+# Systèmes d'exploitation et fichiers temporaires
+# ---------------------------------------------------------------------
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+*.log
+*.tmp
+*.bak
+*.swp

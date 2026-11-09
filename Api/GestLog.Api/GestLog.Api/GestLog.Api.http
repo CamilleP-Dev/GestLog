@@ -1,0 +1,5 @@
+@base = http://localhost:5080
+
+GET {{base}}/api/ping
+###
+GET {{base}}/api/demandeurs
