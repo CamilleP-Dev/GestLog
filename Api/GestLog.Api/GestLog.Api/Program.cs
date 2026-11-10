@@ -11,6 +11,7 @@ builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<ErreurMetierHandler>();
 builder.Services.AddSingleton<OracleConnectionFactory>();
 builder.Services.AddScoped<IDemandeurRepository, DemandeurRepository>();
+builder.Services.AddScoped<IDemandeRepository, DemandeRepository>();
 
 var app = builder.Build();
 
@@ -24,5 +25,6 @@ if (app.Environment.IsDevelopment())
 
 app.MapSante();
 app.MapDemandeurs();
+app.MapDemandes();
 
 app.Run();

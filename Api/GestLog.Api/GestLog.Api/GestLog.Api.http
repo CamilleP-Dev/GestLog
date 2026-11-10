@@ -1,5 +1,73 @@
 @base = http://localhost:5080
 
+### Test de connexion
 GET {{base}}/api/ping
-###
+
+### Demandeurs
 GET {{base}}/api/demandeurs
+
+### C1 Toutes les demandes
+GET {{base}}/api/demandes
+
+### C2 Demandes en attente
+GET {{base}}/api/demandes?statut=EN_ATTENTE
+
+### C3 Création valide (type en minuscules) -> 201
+POST {{base}}/api/demandes
+Content-Type: application/json
+
+{ "demandeurId": 2, "montant": 95000, "dureeMois": 180, "typeProjet": "renovation" }
+
+### C4 Montant trop élevé -> 400 (-20002)
+POST {{base}}/api/demandes
+Content-Type: application/json
+
+{ "demandeurId": 1, "montant": 400000, "dureeMois": 240, "typeProjet": "ACHAT" }
+
+### C5 Demandeur inéligible -> 400 (-20003)
+POST {{base}}/api/demandes
+Content-Type: application/json
+
+{ "demandeurId": 3, "montant": 50000, "dureeMois": 120, "typeProjet": "ACHAT" }
+
+### C6 Durée invalide -> 400 (-20004)
+POST {{base}}/api/demandes
+Content-Type: application/json
+
+{ "demandeurId": 1, "montant": 50000, "dureeMois": 6, "typeProjet": "ACHAT" }
+
+### C7 Type de projet invalide -> 400 (-20005)
+POST {{base}}/api/demandes
+Content-Type: application/json
+
+{ "demandeurId": 1, "montant": 50000, "dureeMois": 120, "typeProjet": "MAISON" }
+
+### C8 Accepter la demande 2 -> 204
+PUT {{base}}/api/demandes/2/statut
+Content-Type: application/json
+
+{ "statut": "ACCEPTEE" }
+
+### C9 La même une deuxième fois -> 400 (-20008)
+PUT {{base}}/api/demandes/2/statut
+Content-Type: application/json
+
+{ "statut": "ACCEPTEE" }
+
+### C10 Refus sans motif -> 400 (-20007)
+PUT {{base}}/api/demandes/3/statut
+Content-Type: application/json
+
+{ "statut": "REFUSEE" }
+
+### C11 Statut cible invalide -> 400 (-20006)
+PUT {{base}}/api/demandes/3/statut
+Content-Type: application/json
+
+{ "statut": "ANNULEE" }
+
+### C12 Id non numérique -> 404
+PUT {{base}}/api/demandes/abc/statut
+Content-Type: application/json
+
+{ "statut": "ACCEPTEE" }
