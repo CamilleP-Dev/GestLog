@@ -1,0 +1,208 @@
+/* =====================================================================
+   Styles de l'APPLICATION : mise en page, formulaire, tableau, badges
+   Toutes les couleurs viennent des variables de index.css
+   ===================================================================== */
+
+/* ---------- Mise en page ---------- */
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.app h1 {
+  font-size: 1.8rem;
+}
+
+.carte {
+  background: var(--surface);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.carte h2 {
+  font-size: 1.2rem;
+}
+
+/* ---------- Formulaire ---------- */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));   /* colonnes qui s'adaptent à la largeur */
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.champ {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input,
+select {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--bordure);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--texte);
+}
+
+/* Contour visible au clavier : important pour l'accessibilité */
+input:focus,
+select:focus,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ---------- Boutons ---------- */
+button {
+  font: inherit;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--accent-texte);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.secondaire {
+  background: transparent;
+  color: var(--texte);
+  border: 1px solid var(--bordure);
+}
+
+td button + button {
+  margin-left: 6px;
+}
+
+/* ---------- Messages ---------- */
+.message {
+  margin: 12px 0 0;
+}
+
+.erreur,
+.succes {
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+.erreur {
+  color: var(--erreur);
+  background: var(--erreur-fond);
+}
+
+.succes {
+  color: var(--succes);
+  background: var(--succes-fond);
+}
+
+.vide {
+  color: var(--texte-doux);
+}
+
+/* ---------- Section des demandes ---------- */
+.barre {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.barre h2 {
+  margin: 0;
+}
+
+.filtre {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- Tableau ---------- */
+.tableau {
+  overflow-x: auto;      /* défilement horizontal sur petit écran, sans casser la page */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--bordure);
+  vertical-align: top;
+}
+
+th {
+  color: var(--texte-doux);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+th.nombre,
+td.nombre {
+  text-align: right;
+  white-space: nowrap;
+}
+
+tbody tr:hover {
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+/* ---------- Badges de statut ---------- */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge.en_attente {
+  color: var(--attente);
+  background: var(--attente-fond);
+}
+
+.badge.acceptee {
+  color: var(--succes);
+  background: var(--succes-fond);
+}
+
+.badge.refusee {
+  color: var(--erreur);
+  background: var(--erreur-fond);
+}
+
+.motif {
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: var(--texte-doux);
+}

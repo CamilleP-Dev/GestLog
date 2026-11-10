@@ -7,8 +7,8 @@ export function getDemandes(statut: Statut | '', signal?: AbortSignal): Promise<
 }
 
 export async function creerDemande(demande: NouvelleDemande): Promise<number> {
-    const id = await requete<number>('/demandes', {method: 'POST', body: demande});
-    return id;
+    const response = await requete< {id: number}>('/demandes', {method: 'POST', body: demande});
+    return response.id;
 }
 
 export function changerStatut(id: number, statut: Statut, motif?: string): Promise<void>{
