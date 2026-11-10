@@ -43,17 +43,17 @@ Choix principaux :
 ## Structure du dépôt
 
 ```
-gestlog/
-  db/
+GestLog/
+  Db/
     01_schema.sql            tables, contraintes, index
     02_donnees.sql           données de test
     04a_pkg_prets_spec.sql   spécification du package
     04b_pkg_prets_body.sql   corps du package
     05_trigger.sql           trigger d'historique des statuts
     06_tests.sql             tests automatisés du package (33 vérifications)
-  api/
+  Api/
     GestLog.Api/             API ASP.NET Core
-  front/                     interface React (Vite)
+  Front/                     interface React (Vite)
 ```
 
 ---

@@ -1,9 +1,9 @@
 # =====================================================================
 # GestLog : .gitignore racine
 # Structure du dépôt :
-#   db/      scripts SQL et PL/SQL (Oracle)
-#   api/     API ASP.NET Core (Visual Studio)
-#   front/   interface React + TypeScript (Vite)
+#   Db/      scripts SQL et PL/SQL (Oracle)
+#   Api/     API ASP.NET Core (Visual Studio)
+#   Front/   interface React + TypeScript (Vite)
 # =====================================================================
 
 
